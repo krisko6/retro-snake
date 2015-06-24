@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Retro Snake</title>
+    <link rel="stylesheet" type="text/css" href="css/snake.css">
+    <link href="jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+    <script src="js/snake.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/snake-view.js"></script>
+
+    <div class="score"></div>
+    <div class="titleScreen">Retro Snake. Click to start</div>
+    <div class="container"></div>
+    <div class="gameOverScreen">Game Over. Click to play again.</div>
+
+    <script>
+    $( document ).ready(function() {
+      $(".titleScreen").show( "slide", {direction: "right",
+    }, 2000 );
+
+    $('.titleScreen').click(function(e) {
+      $(".titleScreen").hide( "slide", {direction: "right", complete: function(){
+        $(".container").show( "slide", {direction: "right",
+        }, 2000 );
+      }
+      }, 2000 );
+
+      new Snake.View(new Snake.Board(), $('.container'));
+    });
+
+    });
+    // new Snake.View(new Snake.Board(), $('.container'));
+
+    </script>
+  </body>
+</html>
