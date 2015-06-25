@@ -15,7 +15,20 @@
     <script src="js/snake-view.js"></script>
 
     <div class="score"></div>
-    <div class="titleScreen">Retro Snake. Click to start</div>
+    <div class="titleScreen">Retro Snake. Click to start.<br>
+      <p>
+        Rules: Collect the apples (grey, individual dots) to grow bigger.<br>
+        The bigger you grow, the more points you score.<br>
+        Avoid running into yourself, and try to survive for as long as possible<br>
+      </p>
+      <p>
+        Controls:<br>
+          Arrow keys to turn snake.<br>
+          P button to pause game.<br>
+          Space button to unpause the game.<br>
+      </p>
+      <h3>Enjoy!</h3>
+    </div>
     <div class="container"></div>
     <div class="gameOverScreen">Game Over. Click to play again.</div>
 
@@ -25,17 +38,22 @@
     }, 2000 );
 
     $('.titleScreen').click(function(e) {
-      $(".titleScreen").hide( "slide", {direction: "right", complete: function(){
-        $(".container").show( "slide", {direction: "right",
+      $(".titleScreen").hide( "slide", {direction: "right", complete: function(){$(".container").html("");
+        $(".container").show( "slide", {direction: "right", complete: function(){new Snake.View(new Snake.Board(), $('.container'));}
         }, 2000 );
       }
       }, 2000 );
+    });
 
-      new Snake.View(new Snake.Board(), $('.container'));
+    $('.gameOverScreen').click(function(e) {
+      $(".gameOverScreen").hide( "slide", {direction: "right", complete: function(){
+        $(".container").show( "slide", {direction: "right", complete: function(){new Snake.View(new Snake.Board(), $('.container'));}
+        }, 2000 );
+      }
+      }, 2000 );
     });
 
     });
-    // new Snake.View(new Snake.Board(), $('.container'));
 
     </script>
   </body>

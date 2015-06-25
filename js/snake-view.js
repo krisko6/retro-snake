@@ -53,10 +53,23 @@
     this.board.move();
 
     this.render();
+    if (this.board.snake.isGameOver()){
+      this.gameEnd();
+    }
   };
 
   View.prototype.pause = function(){
     clearInterval(this.myInterval);
+  };
+
+  View.prototype.gameEnd = function(){
+    this.pause();
+    $(".container").hide( "slide", {direction: "right", complete: function(){
+      $(".titleScreen").show( "slide", {direction: "right",
+      }, 2000 );
+    }.bind(this)
+    }, 2000 );
+
   };
 
   View.prototype.restart = function(){
@@ -70,7 +83,7 @@
     $(".segment").removeClass("apple");
     $(".segment").removeClass("scoreboard");
     $(".score").empty().append(this.board.snake.score);
-    
+
     this.renderScore();
 
     var segments = this.board.snake.segments;
