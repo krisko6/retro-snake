@@ -10,6 +10,10 @@
     this.dir="N";
     this.segments=[[50,28],[50,29],[50,30]];
     this.score = 0;
+    this.gameOver = false;
+  };
+  Snake.Snake.prototype.isGameOver = function(){
+    return this.gameOver;
   };
 
   Snake.Snake.prototype.move = function(){
@@ -40,13 +44,15 @@
       if (Snake.arrayEq(this.segments[0], this.segments[i])) {
         this.segments = [[50,28],[50,29],[50,30]];
         this.dir="N";
-        this.score = 0;
+        this.gameOver = true;
+
       }
     }
 
     if (head[0] < 0 || head[0] > 99 || head[1] < 0 || head[1] > 39) {
       this.segments = [[50,28],[50,29],[50,30]];
       this.dir="N";
+        this.gameOver = true;
       this.score = 0;
     }
 
