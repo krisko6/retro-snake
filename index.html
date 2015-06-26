@@ -15,7 +15,11 @@
     <script src="js/snake-view.js"></script>
 
     <div class="score"></div>
-    <div class="titleScreen">Retro Snake. Click to start.<br>
+    <div class="titleScreen">
+      <br>
+      <br>
+      <br>
+      <h2>Retro Snake. Click to start.</h2>
       <p>
         Rules: Collect the apples (grey, individual dots) to grow bigger.<br>
         The bigger you grow, the more points you score.<br>
@@ -30,9 +34,17 @@
       <h3>Enjoy!</h3>
     </div>
     <div class="container"></div>
-    <div class="gameOverScreen">Game Over. Click to play again.</div>
+    <div class="gameOverScreen">
+      Game Over. Click to play again.</div>
 
     <script>
+    window.addEventListener("keydown", function(e) {
+      // space and arrow keys
+      if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+          e.preventDefault();
+      }
+    }, false);
+
     $( document ).ready(function() {
       $(".titleScreen").show( "slide", {direction: "right",
     }, 2000 );
@@ -46,7 +58,7 @@
     });
 
     $('.gameOverScreen').click(function(e) {
-      $(".gameOverScreen").hide( "slide", {direction: "right", complete: function(){
+      $(".gameOverScreen").hide( "slide", {direction: "right", complete: function(){$(".container").html("");
         $(".container").show( "slide", {direction: "right", complete: function(){new Snake.View(new Snake.Board(), $('.container'));}
         }, 2000 );
       }

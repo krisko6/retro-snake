@@ -65,7 +65,9 @@
   View.prototype.gameEnd = function(){
     this.pause();
     $(".container").hide( "slide", {direction: "right", complete: function(){
-      $(".titleScreen").show( "slide", {direction: "right",
+      $(".gameOverScreen").html("<br><br><br>Game Over. Your score was " +
+       this.board.snake.score + ". Click to play again.");
+      $(".gameOverScreen").show( "slide", {direction: "right",
       }, 2000 );
     }.bind(this)
     }, 2000 );
@@ -90,7 +92,7 @@
     for(var i = 0; i < segments.length; i++){
       var x = segments[i][0];
       var y = segments[i][1];
-        $("#" + x + "-" + y).addClass("snake");
+        $("#" + x + "-" + y).removeClass("scoreboard").addClass("snake");
     }
 
     var apple = this.board.apple;

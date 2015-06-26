@@ -53,7 +53,7 @@
       this.segments = [[50,28],[50,29],[50,30]];
       this.dir="N";
         this.gameOver = true;
-      this.score = 0;
+    
     }
 
 
